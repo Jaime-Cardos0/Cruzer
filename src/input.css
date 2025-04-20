@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+    select{
+        color: #82889d;
+        border: 1px solid #6b7280;
+        border-radius: .5rem;
+        padding: 0 5px;
+    }
+    select:focus{
+        outline: none;
+    }
+    hr{
+        width: 96%;
+        margin: 0 auto;
+    }
+    h1, h2, h3, h4{
+        color: #3F4D67;
+        font-weight: 500;
+    }
+    header 
+    {
+        background: linear-gradient(135deg, #3F4D67, #2E3A50);
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    }
+    header ul li a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 16px;
+        font-size: 15px;
+    }
+    header ul li a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }   
+    
+    meter::-webkit-meter-bar {
+        border: none;
+        height: 1.25rem;
+        box-shadow: none;
+        background: #E5EFFF;
+        border-radius: 8px;
+    }
+
+    meter::-webkit-meter-optimum-value {
+        background: linear-gradient(to right, #b3cefa, #86b2f8);
+        border-radius: 8px;
+    }
+
+    meter::-webkit-meter-suboptimum-value {
+        background: linear-gradient(to right, #b3cefa, #86b2f8); 
+        border-radius: 8px;
+    }
+
+    meter::-webkit-meter-even-less-good-value {
+        background: linear-gradient(to right, #b3cefa, #86b2f8);
+        border-radius: 8px;
+    }
+}
+
+@layer components{
+    .card {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s, box-shadow 0.2s;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        padding: .25rem;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    }
+    .group{
+        align-items: flex-start;
+        padding: 0.5rem 1.25rem;
+        margin-top: 1.25rem;
+        height: 10rem;
+        background-color: #eff6ff;
+    }
+    .group:hover {
+      transform: none;
+    }
+    .alert-box {
+        display: flex;
+        align-items: center;
+        background: #ffffff;
+        border-left: 5px solid #3F4D67;
+        padding: 16px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .alert-box h4 {
+        color: #3F4D67;
+      }
+      .alert-box input {
+        background: #3F4D67;
+        color: white;
+        transition: background-color 0.2s;
+      }
+      .alert-box input:hover {
+        background: #E55353;
+      }
+      .section-content{
+        display: flex;
+        border-radius: 6px;
+        background-color: white;
+        flex-direction: column;
+        padding: 0 20px;
+      }      
+      input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}

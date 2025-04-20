@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="output.css">
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class=" w-full h-full font-poppins bg-[#F3F6F8] p-3 flex flex-col gap-4 ">
+    <header class=" flex w-full h-12">
+        <a class=" w-28 h-10"><img   src="/Icon/login-icon.png" alt=""></a>
+    </header>
+    <main class=" container w-full flex justify-center items-center">
+        <section class=" flex  flex-col items-center justify-center gap-8">
+            <article class=" font-inter p-4 text-2xl w-full ">
+                <h2 class=" text-3xl w-[500px]"> 
+                    <span class="font-semibold text-blue-500 ">Bem-vindo</span> ao <span class=" italic">Cruzeiro!</span> Pronto para contribuir para sua congregação?
+                </h2>
+                <span class=" font-inter text-xs font-light text-gray-500">Por favor, insira suas informações de login para continuar.</span>
+            </article>
+            <article class=" p-4">
+                <form action="" class=" gap-10 bg-white rounded-md flex flex-col shadow-md shadow-gray-500 w-96 h-auto px-4 py-8 ">
+                  <span class=" flex flex-col gap-4">
+                    <input type="text" placeholder="E-mail ou Telefone" class="p-2 h-11 bg-white font-extralight text-base  rounded-sm border border-gray-300 focus:outline-none focus:font-light focus:border focus:border-[#32ADDB]">
+                    <input type="text" placeholder="Senha" class="p-2 h-11 bg-white font-light text-base rounded-sm border border-gray-300 focus:outline-none focus:border focus:border-[#32ADDB]">
+                  </span>
+                  <span>
+                    <input type="button" value="Iniciar Sessão" class=" w-full p-2 text-center font-medium font-poppins  text-white h-12 bg-blue-500 text-lg rounded-sm">
+                  </span>
+                </form>
+                <a href="#" class=" justify-center font-light font-poppins flex p-5 text-gray-600 ">Esqueceu a senha?</a>
+            </article>
+        </section>
+    </main>
+</body>
+</html>

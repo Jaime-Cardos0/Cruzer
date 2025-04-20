@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+.ocultar{
+  display: none;
+}
+
+.mostrar{
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-self: flex-end;
+  cursor: pointer;
+  transition: 1s;
+  
+}
+
+.fundo{
+  background-color: #e1e9f235;
+  border-right: 5px solid white;
+}
+
+.denuncia{
+  width: 500px;
+
+}
+
+.denuncia input:focus{
+  outline: #3B82F6;
+  
+}
+
+.denuncia textarea:focus{
+  outline: #3B82F6;
+  
+}
+.sec{
+  background-color: #F9FBF2;
+  /* background-color: #06365E; */
+}
+
+.ii{
+  width: 400px;
+   height: 450px;
+}
+
+.www{
+  background-color: #F9FBF2;
+
+}
+
+.header-there{
+  background-image: url('flat-lay-desk-arrangement-with-copy-space.jpg');
+  height: 200px;
+  overflow-y: auto;
+  background-position: center;
+  overflow-x: hidden;
+  background-size: cover; 
+  background-repeat: no-repeat;
+}
+
+.header{
+  background-image: url('flat-lay-desk-arrangement-with-copy-space.jpg');
+  height: 800px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-position: center;
+  background-size: cover; 
+  background-repeat: no-repeat;
+  
+}
+.header-two{
+  background-image: url('flat-lay-desk-arrangement-with-copy-space.jpg');  /* url('./Icon/pexels-packermann-1666021.jpg'); */
+  background-attachment: fixed;
+  height: 800px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-position: center;
+  background-size: cover;
+
+  
+}
+.button{
+  background-color: #3f5267;
+  border-radius: 8px;
+}
+.compor{
+  border-end-start-radius: 80%;
+  height: 480px;
+  border-top-right-radius:24px ;
+  border-bottom-right-radius:24px ;
+}
+
+.position {
+  top: -140px;
+}
+.position-two {
+  top: -50px;
+}
+
+.hh{
+  height: 26px;
+}
+
+.ww{
+  width: 220px;
+}
+
+
+
+
+.body{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background-color: #fefefe;
+}
+
+
+/* Estilizar a barra de rolagem do modal */
+#modal .overflow-y-auto {
+  scrollbar-width: thin; /* Define a largura da barra de rolagem */
+  scrollbar-color: #3F4D67 #f1f1f1; /* Define a cor da barra de rolagem e o fundo */
+}
+
+/* Estilizar a barra de rolagem no Chrome, Edge, Safari */
+#modal .overflow-y-auto::-webkit-scrollbar {
+  width: 8px; /* Largura da barra de rolagem */
+}
+
+#modal .overflow-y-auto::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Cor de fundo da área da barra de rolagem */
+}
+
+#modal .overflow-y-auto::-webkit-scrollbar-thumb {
+  background-color: #4A6DA7; /* Cor da barra de rolagem */
+  border-radius: 10px; /* Bordas arredondadas para a barra de rolagem */
+  border: 2px solid #f1f1f1; /* Cor do contorno */
+}
+
+#modal .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background-color: #3F4D67; /* Cor da barra de rolagem quando o usuário passa o mouse sobre ela */
+}

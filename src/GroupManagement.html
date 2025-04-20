@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de grupos</title>
+    <!-- <link rel="shortcut icon" href="/build/Icon/water.png" type="image/x-icon"> -->
+    <link rel="stylesheet" href="./output.css">
+    <link rel="stylesheet" href="../style.css">
+    <script src="./Codes/Cadastro_interacao.js"></script>
+    <!-- <script src="/build/HeaderEngine.js" defer></script> -->
+    <script type="module" src="./Codes/Congregacao.js"></script>
+    <script type="module" src="./Codes/Group_interacao.js"></script>
+    <!-- <script src="/build/Pages_Codes/GroupManagement/Management.js" defer></script> -->
+</head>
+<body class="h-screen w-screen flex gap-4 items-center bg-[#f5f5f5] flex-[1] overflow-hidden">
+
+    <!-- Menu de navegação da página-->
+        
+    <header class="h-full w-[18%] bg-[#3F4D67] text-white text-[14px] flex flex-col justify-between">
+
+        <section class="flex items-center justify-between espaco_em_cima ">
+            <div class="flex items-center gap-2 cursor-pointer">
+                <img src="../Icon/water.png" alt="" src="" class="w-[20px]">
+                <span class="font-bold text-[14px]">Cruzeiro</span>
+            </div>
+
+            <img src="../Icon/sort.png" alt="" class="cursor-pointer hidden">
+        </section>
+
+        <ul class="flex flex-col gap-4 justify-start flex-1 mt-[8rem]">
+            
+            <a href="./Dashboard.html" class="flex items-center gap-2 cursor-pointer">
+                <img src="../Icon/dashboard (1).png" alt="" class="w-[20px] ml-4">
+                <span>Dashboard</span>
+            </a>
+            
+            <li class="flex flex-col gap-2" id="menu">
+                <div class="flex items-center gap-2 cursor-pointer" id="menu_principal">
+                    <img src="../Icon/add.png" alt="" class="w-[20px] ml-4">
+                    <span>Publicador</span>
+                    <img src="../Icon/stash_chevron-down-light.png" alt="">
+                </div>
+
+                    <ul class="flex flex-col gap-1 self-end cursor-pointer ocultar" id="sub_menu">
+                    <a href="./cadastro.html"><li class="flex gap-1 items-center text-[13px]"><img src="../Icon/adicionar.png" alt=""><span>Cadastrar publicador</span></li></a>
+                    <a href="./editar.html"> <li class="flex gap-1 items-center text-[13px]"><img src="../Icon/Frame 1.png" alt=""><span>Central de edição.</span></li></a>
+
+                   </ul>
+            </li>
+            <li class="flex flex-col gap-2" id="menu2">
+               <div class="flex items-center gap-2 cursor-pointer" id="menu_principal2">
+                <img src="../Icon/chapel.png" alt="" class="w-[20px] ml-4">
+                <span>Congregação</span>
+                <img src="../Icon/stash_chevron-down-light.png" alt="">
+               </div>
+
+               <ul class="flex flex-col gap-1 self-end cursor-pointer ocultar" id="sub_menu2">
+                <a href="./gerenciamento.html"><li class="flex gap-1 items-center text-[13px]"><img src="../Icon/carbon_group-security.png" alt=""><span>Gerir grupos</span></li></a>
+                <a href="#"><li class="flex gap-1 items-center text-[13px]"><img src="../Icon/uim_calender.png" alt=""><span>Calendário</span></li></a>
+                <a href="./alertas.html"><li class="flex gap-1 items-center pb-2"><img src="../Icon/mingcute_chat-1-line.png" alt=""><span>Enviar alerta</span></li></a>
+                </ul>
+            </li>
+            <li class="flex items-center gap-2 cursor-pointer">
+                <img src="../Icon/layer.png" alt="" class="w-[20px] ml-4">
+                <span>Relatórios</span>
+            </li>
+        </ul>
+
+    </header>
+
+    <main class="flex bg-[#f5f5f5] items-center flex-col gap-10 w-[92%] h-full overflow-y-auto scrollbar mt-4 mb-10" id="main">
+        <nav class="flex items-center justify-between w-full h-[8%]">
+           <h1 class="font-[400] text-[22px] text-[#3F4D67] "> Congregação  >  Grenciamento dos grupos</h1>
+           <div class="flex items-center gap-2">
+            <span class="bg-white rounded-full p-2"><img src="../Icon/setting.png" alt="" class="w-[20px]"></span>
+            <span class="bg-white rounded-full p-2 mr-6"><img src="../Icon/material-symbols_notifications-outline-rounded.png" alt="" class="w-[20px] "></span>
+           </div>
+        </nav>
+
+        <!--Nota Informativa-->
+        <section class="flex flex-col gap-8 items-center w-full h-[82%]">
+            <article class="flex items-center gap-4 bg-[#FFFFFF] rounded-lg w-[95%] p-2 shadow-md">
+                <img src="../Icon/carbon_group-security@2x.png" alt="" class="w-[50px]">
+                <div class="flex flex-col gap-1">
+                    <h2 class="text-[#3F4D67] text-[17px] font-[500]">Gerenciamento dos grupos</h2>
+                    <p class="text-[12px] text-slate-400 break-words">Bem-vindo à área de Gerenciamento dos grupos! Aqui, você pode gerenciar, criar e manter grupos da congregação para garantir uma melhor organização e assistência.</p>
+                </div>
+            </article>
+            
+            <!-- Seção de apresentação dos dados da página como o nº de publicadores, grupos, etc... -->
+
+            <!-- <section class="flex w-full h-[5em] gap-4 items-center justify-center">
+                <article class="flex flex-col gap-[1px] items-center bg-white rounded-md shadow-md w-[12em] h-full hover:translate-y-5 ">
+                    <span class="text-gray-400 text-[14px]">Publicadores</span>
+                    <span class="font-bold text-[25px] text-[#3F4D67]" id="numero_publicadores">0</span>
+                    <span class="text-gray-400 text-[14px]">Default</span>
+                </article>
+                <article class="flex flex-col gap-[1px] items-center bg-white rounded-md shadow-md w-[12em] h-full hover:translate-y-5">
+                    <span class="text-gray-400 text-[14px]">Grupos</span>
+                    <span class="font-bold text-[25px] text-[#3F4D67]" id="numero_grupos">0</span>
+                    <span class="text-gray-400 text-[14px]">Default</span>
+                </article>
+                <article class="flex flex-col gap-[1px] items-center bg-white rounded-md shadow-md w-[12em] h-full hover:translate-y-5">
+                    <span class="text-gray-400 text-[14px]">Relatórios Pendentes</span>
+                    <span class="font-bold text-[25px] text-[#3F4D67]" id="relatorios_pendentes">0</span>
+                    <span class="text-gray-400 text-[14px]">Default</span>
+                </article>
+                <article class="flex flex-col gap-[1px] items-center bg-white rounded-md shadow-md w-[12em] h-full hover:translate-y-5">
+                    <span class="text-gray-400 text-[14px]">Relatórios Recebidos</span>
+                    <span class="font-bold text-[25px] text-[#3F4D67]" id="relatorios_recebidos">0</span>
+                    <span class="text-gray-400 text-[14px]">Default</span>
+                </article>
+            </section> -->
+
+                <!--Seção que permite a criação de um novo grupo-->
+
+            <section class="flex gap-8 items-center justify-center w-full h-[18em]">
+
+                <article class="flex flex-col justify-center items-center gap-5 bg-white w-[14em] h-[14em] rounded-md shadow-md">
+                    <span class="bg-[#E1E9F2] rounded-full p-4 cursor-pointer" id="inserirGrupo"><img src="../Icon/Plus.png" alt="" class="w-[30px]"></span>
+                    <div class="flex flex-col gap-1 items-center justify-center">
+                        <h3 class="text-[#3F4D67] text-[17px] font-[600]">Criar Grupo</h3>
+                        <p class="text-[12px] break-words text-left ml-2 w-[190px] text-gray-400">Crie e gerencie grupos de forma 
+                            intuitiva, facilitando uma 
+                            administração eficiente e 
+                            organizada da congregação
+                        </p>
+                    </div>
+                </article>
+
+                <!-- editadar grupo -->
+
+                <article class="flex flex-col justify-center items-center gap-5 bg-white w-[14em] h-[14em] rounded-md shadow-md">
+                    <span class="bg-[#E1E9F2] rounded-full p-4 cursor-pointer" id="editarGrupo"><img src="../Icon/Plus.png" alt="" class="w-[30px]"></span>
+                    <div class="flex flex-col gap-1 items-center justify-center">
+                        <h3 class="text-[#3F4D67] text-[17px] font-[600]">Editar Grupo</h3>
+                        <p class="text-[12px] break-words text-left ml-2 w-[190px] text-gray-400">Edite e gerencie grupos de forma 
+                            intuitiva, facilitando uma 
+                            administração eficiente e 
+                            organizada da congregação
+                        </p>
+                    </div>
+                </article>
+
+                <!--Seção que mostra os melhores grupos da plataforma de acordo a um determinado tempo-->
+    
+                <article class=" flex flex-col items-center gap-2 w-[400px] h-[14em] bg-white rounded-md shadow-md">
+                    <div class="flex items-center gap-2 w-full h-[6em]">
+                        <span class="bg-[#E1E9F2] rounded-full p-2 ml-2"><img src="../Icon/Group.png" alt="" class="w-[30px]"></span>
+                    <div class="flex flex-col gap-1">
+                        <h3 class="text-[20px] text-gray-400">Melhores Performaces</h3>
+                        <p class="text-[13px] text-gray-400">Veja os membros de destaque pela dedicação e desempenho na congregação.</p>
+                    </div>
+                   
+                    <select name="meses" id="meses">
+                        <option value="" selected disabled>Mês</option>
+                        <option value="1">Janeiro</option>
+                        <option value="2">Fevereiro</option>
+                        <option value="3">Março</option>
+                        <option value="4">Abril</option>
+                        <option value="5">Maio</option>
+                        <option value="6">Junho</option>
+                        <option value="7">Julho</option>
+                        <option value="8">Agosto</option>
+                        <option value="9">Setembro</option>
+                        <option value="10">Otubro</option>
+                        <option value="11">Novembro</option>
+                        <option value="12">Dezembro</option>
+                    </select>
+                    </div>
+
+                    <article class="flex gap-2 items-center justify-center w-full h-[6em]">
+
+                        <div class="h-[100px] w-[100px] rounded-md bg-gray-300 shadow-md mb-4 flex items-center justify-center">
+
+                            <div class="flex flex-col items-center justify-center bg-slate-100 w-[70px] h-[30px] rounded-md text-[10px] mt-[90px] shadow-md">
+                                <p class="text-blue-600">1 st</p>
+                                <p>Grupo 1</p>
+                            </div>
+                        </div>
+
+                        <div class="h-[100px] w-[100px] rounded-md bg-gray-300 shadow-md mb-4 flex items-center justify-center">
+
+                            <div class="flex flex-col items-center justify-center bg-slate-100 w-[70px] h-[30px] rounded-md text-[10px] mt-[90px] shadow-md">
+                                <p class="text-blue-600">1 st</p>
+                                <p>Grupo 1</p>
+                            </div>
+                        </div>
+
+                        <div class="h-[100px] w-[100px] rounded-md bg-gray-300 shadow-md mb-4 flex items-center justify-center">
+
+                            <div class="flex flex-col items-center justify-center bg-slate-100 w-[70px] h-[30px] rounded-md text-[10px] mt-[90px] shadow-md">
+                                <p class="text-blue-600">1 st</p>
+                                <p>Grupo 1</p>
+                            </div>
+                        </div>
+
+                    </article>
+                </article>
+            </section>
+
+            <!--Seção que mostra os dados de um determinado grupo-->
+
+            <section class="w-full h-[18em]">
+                <article class="h-full w-full flex flex-col gap-4">
+                    <select name="grupos" id="grupoSelect" class="flex self-start">
+                        <option selected value="">Grupos</option>
+                    </select>
+
+                    <article class="flex items-center justify-center gap-3">
+                        <div class="dataCard flex flex-col gap-[1px] items-center bg-white rounded-md shadow-md w-[12em] h-full ">
+                            <span class="titulo text-gray-400 text-[14px]">Membros</span>
+                            <span class="valor font-bold text-[25px] text-[#3F4D67]">0</span>
+                        </div>
+
+                        <div class="dataCard flex flex-col gap-[1px] items-center bg-white rounded-md shadow-md w-[12em] h-full ">
+                            <span class="titulo text-gray-400 text-[14px]">Publicadores Ativos</span>
+                            <span class="valor font-bold text-[25px] text-[#3F4D67]">0</span>
+                        </div>
+
+                        <div class="dataCard flex flex-col gap-[1px] items-center bg-white rounded-md shadow-md w-[12em] h-full ">
+                            <span class="titulo text-gray-400 text-[14px]">Relatórios Pendentes</span>
+                            <span class="valor font-bold text-[25px] text-[#3F4D67]">0</span>
+                        </div>
+
+                        <div class="dataCard flex flex-col gap-[1px] items-center bg-white rounded-md shadow-md w-[12em] h-full ">
+                            <span class="titulo text-gray-400 text-[14px]">Relatórios Enviados</span>
+                            <span class="valor font-bold text-[25px] text-[#3F4D67]">0</span>
+                        </div>
+                    </article>
+
+                    <!-- Botões que permitem adicionar um membro à um determinado grupo e remover o grupo-->
+                    <article class="flex gap-2 items-center self-end mr-2">
+                        <button class="h-[40px] w-[150px] text-white text-center rounded-md shadow-md bg-blue-800" id="verMembros">Ver Membros</button>
+                        <button class="h-[40px] w-[150px] text-white text-center rounded-md shadow-md bg-blue-800" id="adicionarMembros">Adicionar Membros</button>
+                        <button class="h-[40px] w-[150px] text-white text-center rounded-md shadow-md bg-red-600" id="removerGrupo">Remover Grupo</button>
+                    </article> 
+                </article>
+            </section>
+
+            <!--Menu de navegação, para aprentação dos elementos de um determinado grupo-->
+            <section class="flex w-full justify-between">
+                <ul class="flex justify-between bg-gray-400 text-white rounded-md items-center h-123">
+                    <li class="cursor-pointer p-1 ml-2 w-[60px] text-center rounded-md" id="todos">Todos</li>
+                    <li class="cursor-pointer text-center ml-2" id="publicadores">Publicadores</li>
+                    <li class="p-2 cursor-pointer text-center ml-2" id="pioneiros">Pioneiros</li>
+                    <li class="p-2 cursor-pointer text-center ml-2" id="superintendentes">Superintendente</li>
+                    <li class="p-2 cursor-pointer text-center ml-2" id="anciãos">Anciãos</li>
+                </ul>
+                <article class="flex bg-white rounded-md items-center justify-center shadow shadow-gray-200 mr-2">
+                    <label class=" flex items-center justify-center" for="texto">
+                        <img class="h-5 w-5 mx-1"  src="../Icon/Vector.png" alt="#">
+                        <input class="w-72 focus:outline-none focus:text-gray-400 border-none p-1 border text-sm text-gray-400" placeholder="Procurar por um membro..." type="text" name="texto" id="texto">
+                    </label>
+                </article>
+            </section>
+
+            <section class="w-full h-[18em] mb-10">
+                <table class="w-full h-14 overflow-y-scroll border-collapse border border-gray-200 bg-white rounded-lg shadow-lg mr-2 mb-10">
+                    <thead>     
+                        <tr class="bg-gray-400 text-gray-100 text-sm leading-normal uppercase">
+                        <th class="py-2 px-6 text-left">Nome</th>
+                        <th class="py-2 px-6 text-left">Função</th>
+                        <th class="py-2 px-6 text-left">Estado</th>
+                        <th class="py-2 px-6 text-left"></th>
+                        </tr>   
+                    </thead>
+                    <tbody class="text-gray-700 text-sm font-light" id="tbody2"></tbody>
+                </table>
+            </section>
+
+            <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+                <div class="bg-white rounded-md shadow-lg w-full max-w-lg max-h-[90vh] flex flex-col">
+            
+                    <!-- Cabeçalho -->
+                    <div class="flex flex-col justify-between items-center p-4 border-b">
+                        <svg id="closeModalBtn" class=" self-end text-gray-700 hover:text-red-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <rect width="24" height="24" fill="none" />
+                            <path fill="currentColor" d="m12 12.708l-5.246 5.246q-.14.14-.344.15t-.364-.15t-.16-.354t.16-.354L11.292 12L6.046 6.754q-.14-.14-.15-.344t.15-.364t.354-.16t.354.16L12 11.292l5.246-5.246q.14-.14.345-.15q.203-.01.363.15t.16.354t-.16.354L12.708 12l5.246 5.246q.14.14.15.345q.01.203-.15.363t-.354.16t-.354-.16z" />
+                        </svg>
+                        <h2 class="text-2xl font-normal text-center text-gray-800">Criar Grupo de Serviço de Campo</h2>
+                    </div>
+
+                    <form action="" class="flex gap-4 items-center w-full h-full bg-white mb10 justify-center mb-10 py-1">
+                        <article class="flex flex-col items-center gap-2 mt-2 ml-2 w-[40%]">
+                            <div class="flex flex-col items-center w-full gap-1">
+                                <span class="flex items-center w-full justify-between"> 
+                                    <label for="editar_super" class="text-[#3F4D67] text-[16px] font-[500]">Superintendente</label> 
+                                    <select name="Superintendente" id="Superintendente" class="text-[12px] text-gray-500"><option value="" selected disabled>escolher</option></select>
+                                </span>
+                                <input type="text" placeholder="Superintendente" id="superintendente" class="p-2 rounded-sm border w-full">
+                            </div>
+                            <div class="flex flex-col items-center gap-1 w-full">
+                                <label for="editar_local" class="text-[#3F4D67] text-[16px] font-[500] flex self-start w-full">Local</label>
+                                <input type="text" placeholder="Preencha este campo..." id="local" class="p-2 rounded-sm border w-full">
+                            </div>
+                            <div class="flex flex-col items-center gap-1 w-full">
+                                <label for="editar_local" class="text-[#3F4D67] text-[16px] font-[500] flex self-start w-full">Nome do grupo</label>
+                                <input type="text" placeholder="Grupo n" id="nomeGrupo" class="p-2 rounded-sm border w-full">
+                            </div>
+                        </article>
+    
+                        <article class="flex flex-col items-center gap-2 mt-2 ml-2 w-[40%]">
+                            <div class="flex flex-col items-center w-full gap-1">
+                                <span class="flex items-center w-full justify-between"> 
+                                    <label for="editar_ajuda" class="text-[#3F4D67] text-[16px] font-[500]">Ajudante</label> 
+                                    <select name="Ajudante" id="Ajudante" class="text-[12px] text-gray-500"><option value="" selected disabled>escolher</option></select>
+                                </span>
+                                <input type="text" placeholder="Ajudante" id="ajudante" class="p-2 rounded-sm border w-full">
+                            </div>
+                            <div class="flex gap-2 w-full">
+                                <div class="flex flex-col items-center gap-1 w-full">
+                                    <label for="dia" class="text-[#3F4D67] text-[16px] font-[500] flex self-start w-full">Dia</label>
+                                    <select id="dia" name="dia" class=" w-28 h-9 text-gray-800 font-light text-base rounded-[4px] border border-gray-200 focus:text-black  focus:outline-none focus:border">
+                                        <option value="1" selected disabled>Domingo</option>
+                                        <option value="2">Segunda-feira</option>
+                                        <option value="3">Terça-feira</option>
+                                        <option value="4">Quarta-feira</option>
+                                        <option value="5">Qinta-feira</option>
+                                        <option value="6">Sexta-feira</option>
+                                      </select>
+                                </div>
+                                <div class="flex flex-col items-center gap-1 w-full">
+                                    <label for="hora" class="text-[#3F4D67] text-[16px] font-[500] flex self-start w-full">Hora</label>
+                                    <input type="time" placeholder="Preencha este campo..." id="hora" class="p-2 rounded-sm border w-full">
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-2 mt-4">
+                                <button class="h-[40px] w-[155px] text-white text-center rounded-md shadow-md bg-[#3F4D67]" id="criarGrupo">Criar grupo</button>
+                                <!-- <button type="submit" class="h-[40px] w-[155px] text-white rounded-md shadow-md bg-[#3F4D67] text-center" id="editar_membro">Adicionar membros</button> -->
+                            </div>
+                        </article>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        const openModalBtn = document.getElementById('inserirGrupo');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const modal = document.getElementById('modal');
+    
+        openModalBtn.addEventListener('click', () => {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            modal.classList.add('items-center');
+            modal.classList.add('justify-center');
+        });
+    
+        closeModalBtn.addEventListener('click', () => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            modal.classList.remove('items-center');
+            modal.classList.remove('justify-center');
+        });
+    </script>
+</div>
+</body>
+</html>

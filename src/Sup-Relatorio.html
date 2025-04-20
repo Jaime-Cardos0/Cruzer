@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./output.css">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script type="module" src="./Codes/Sup-Relatorio.js"></script>
+    <script type="module" src="./Codes/Congregacao.js"></script>
+</head>
+<body class=" bg-[#F3F6F8] h-full w-full overflow-y-auto">
+    <header class=" bg-white">
+        <nav class=" w-full h-16 flex justify-between items-center font-poppins px-7">
+            <ul>
+                <li >
+                    <img class=" w-32" src="/Icon/login-icon.png" alt="">
+                </li>
+            </ul>
+            <ul class=" flex gap-4">
+                <li class=" flex gap-1 px-2 py-1 items-center rounded-md">
+                    <span class=" text-[#D0D0D0]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M12 4h8v6h-8zm0 17V11h8v10zm-9 0v-6h8v6zm0-7V4h8v10zm1-9v8h6V5zm9 0v4h6V5zm0 7v8h6v-8zm-9 4v4h6v-4z"/></svg>
+                    </span>
+                    <span class=" text-[#D0D0D0] font-light text-sm ">Dashboard</span>
+                </li>
+                <li class=" flex gap-1 px-2 py-1 rounded-md bg-[#E5EFFF]">
+                    <span class=" text-[#6F8BB8]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><path fill="currentColor" d="m2.25 8.452l9.5 5.48a.5.5 0 0 0 .5 0l9.5-5.48a.5.5 0 0 0 0-.866l-9.5-5.476a.51.51 0 0 0-.5 0l-9.5 5.476a.5.5 0 0 0 0 .866M12 3.122l8.499 4.898L12 12.923L3.501 8.02zm9.248 12.404L12 20.921l-9.248-5.395a.5.5 0 1 0-.504.864l9.5 5.542a.5.5 0 0 0 .504 0l9.5-5.542a.5.5 0 1 0-.504-.864m0-4L12 16.921l-9.248-5.395a.5.5 0 1 0-.504.864l9.5 5.542a.5.5 0 0 0 .504 0l9.5-5.542a.5.5 0 1 0-.504-.864"/></svg>
+                    </span>
+                    <span class=" text-[#6F8BB8] font-light text-sm">Relatório</span>
+                </li>
+                <!-- <li class=" flex gap-1 px-2 py-1 rounded-md">
+                    <span class=" text-[#D0D0D0]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                            <rect width="23" height="23" fill="none" />
+                            <g fill="none" stroke="currentColor" stroke-width="1">
+                                <path d="M3.082 13.945c-.529-.95-.793-1.426-.793-1.945s.264-.994.793-1.944L4.43 7.63l1.426-2.381c.559-.933.838-1.4 1.287-1.66c.45-.259.993-.267 2.08-.285L12 3.26l2.775.044c1.088.018 1.631.026 2.08.286s.73.726 1.288 1.659L19.57 7.63l1.35 2.426c.528.95.792 1.425.792 1.944s-.264.994-.793 1.944L19.57 16.37l-1.426 2.381c-.559.933-.838 1.4-1.287 1.66c-.45.259-.993.267-2.08.285L12 20.74l-2.775-.044c-1.088-.018-1.631-.026-2.08-.286s-.73-.726-1.288-1.659L4.43 16.37z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </g>
+                        </svg>
+                    </span>
+                    <span class=" text-[#D0D0D0] font-light text-sm">Configurações</span>
+                </li> -->
+            </ul>
+            <ul class=" flex items-center gap-3">
+                <li>
+                    <span class=" text-[#D0D0D0]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                            <rect width="24" height="24" fill="none" />
+                            <g fill="none" stroke="currentColor" stroke-width="1">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 19v-9a6 6 0 0 1 6-6v0a6 6 0 0 1 6 6v9M6 19h12M6 19H4m14 0h2m-9 3h2" />
+                                <circle cx="12" cy="3" r="1" />
+                            </g>
+                        </svg>
+                    </span>
+                </li>
+                <li class=" flex items-center gap-2">
+                    <img class=" w-9 h-9 rounded-full" src="/Icon/LM (1).png" alt="">
+                    <div class=" flex flex-col">
+                        <span class=" font-light text-lg">Ladislau Mário</span>
+                        <span class=" font-light text-xs text-[#7b7b7b] ">Superintendente</span>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main class="px-7 flex flex-col gap-8">
+        <article class="mt-5">
+            <h2 class=" text-2xl text-[#3F4D67]">Relatórios</h2>
+            <p class=" text-[#7b7b7b] font-light text-sm">
+                Bem-vindo aos  relatórios!
+            </p>
+        </article>
+        <section class=" flex justify-between">
+            <article class=" w-full">
+                <label class=" bg-white shadow-sm shadow-gray-200 flex gap-1.5 p-2 w-[370px] h-[35px] rounded-sm items-center ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                        <rect width="24" height="24" fill="none" />
+                        <path fill="none" stroke="#979799" stroke-linecap="round" stroke-linejoin="round" d="m21 21l-4.343-4.343m0 0A8 8 0 1 0 5.343 5.343a8 8 0 0 0 11.314 11.314" stroke-width="1" />
+                    </svg>                  
+                     <input class=" w-full h-full  font-extralight  text-sm placeholder:text-[#B3B3B3] focus:outline-none focus:text-gray-500" "text" placeholder="Procura por um membro...">
+                </label>
+            </article>
+            <article class=" flex gap-2">
+                <button class=" flex gap-1 px-2 py-1 rounded-sm bg-[#4A6DA7] w-24 justify-around text-white">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <rect width="24" height="24" fill="none" />
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4.5 7h15M7 12h10m-7 5h4" />
+                        </svg>
+                    </span>
+                    <span class=" font-light">Filtrar</span>
+                </button>
+                <article>
+                    <!-- BOTÃO PARA ABRIR A MODAL -->
+                    <button id="openModalBtn" class="flex gap-1 px-2 py-1 rounded-sm bg-white border border-[#4A6DA7] w-40 justify-around">
+                        <span class="text-[#4A6DA7]">
+                        <!-- Ícone -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <rect width="24" height="24" fill="none" />
+                            <path fill="currentColor"
+                            d="M5.616 20q-.691 0-1.153-.462T4 18.384V5.616q0-.691.463-1.153T5.616 4h4.5q.212 0 .356.144t.144.357t-.144.356t-.356.143h-4.5q-.231 0-.424.192T5 5.616v12.769q0 .23.192.423t.423.192h12.77q.23 0 .423-.192t.192-.423v-4.5q0-.213.144-.357t.357-.143t.356.143t.143.357v4.5q0 .69-.462 1.153T18.384 20zM16 8h-2.5q-.213 0-.356-.144T13 7.499t.144-.356T13.5 7H16V4.5q0-.213.144-.356T16.501 4t.356.144T17 4.5V7h2.5q.213 0 .356.144t.144.357t-.144.356T19.5 8H17v2.5q0 .213-.144.356t-.357.144t-.356-.144T16 10.5z" />
+                        </svg>
+                        </span>
+                        <span class="font-light text-[#4A6DA7]">Novo Relátório</span>
+                    </button>
+
+                    <!-- MODAL -->
+                    <div id="modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
+                        <div class="bg-white rounded-md shadow-lg w-full max-w-lg max-h-[90vh] flex flex-col">
+                    
+                            <!-- Cabeçalho -->
+                            <div class="flex flex-col justify-between items-center p-4 border-b">
+                                <svg id="closeModalBtn" class=" self-end text-gray-700 hover:text-red-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                    <rect width="24" height="24" fill="none" />
+                                    <path fill="currentColor" d="m12 12.708l-5.246 5.246q-.14.14-.344.15t-.364-.15t-.16-.354t.16-.354L11.292 12L6.046 6.754q-.14-.14-.15-.344t.15-.364t.354-.16t.354.16L12 11.292l5.246-5.246q.14-.14.345-.15q.203-.01.363.15t.16.354t-.16.354L12.708 12l5.246 5.246q.14.14.15.345q.01.203-.15.363t-.354.16t-.354-.16z" />
+                                </svg>
+                                <h2 class="text-2xl font-normal text-center text-gray-800">Compor Relatório de Serviço de Campo</h2>
+                                
+                            </div>
+                        
+                            <!-- Conteúdo -->
+                            <div class="p-4 overflow-y-auto flex-1 space-y-4">
+                        
+                                <!-- Nome e Data -->
+                                <article class=" flex items-center justify-between">
+                                    <div class=" flex gap-1 items-center ">
+                                        <img class=" hh rounded-full" src="/Icon/LM (1).png" alt="">
+                                        <h5 id="nomeRelatorio" class=" text-base text-gray-400 italic font-light">Ladislau Manuel Fite Mário</h5>
+                                    </div>
+                                
+                                    <div class=" text-base text-gray-400 italic font-light">
+                                        <span id = 'dataRelatorio'>
+                                            14-02-2025
+                                        </span>
+                                    </div>
+                                </article>
+                        
+                                <!-- Participação -->
+                                <div class=" flex flex-col gap-2">
+                                    <span class=" flex flex-col ">
+                                        <h4 class=" text-[#3F4D67] text-lg font-normal font-poppins">Participação</h4>
+                                        <p class=" text-xs font-light font-inter text-gray-600">Marque se você participou de alguma modalidade do ministério durante o mês.</p>
+                                    </span>
+                                    <span class="flex-col gap-1 flex">
+                                        <label class=" flex items-center gap-4 h-8 text-gray-600  font-light text-base " >
+                                            <input type="radio" name="Participacao" value="participei">
+                                            <p>Sim, participei!</p>
+                                        </label>
+                                        <label class=" flex items-center gap-4 h-8 text-gray-600 font-light text-base ">
+                                            <input type="radio" name="Participacao" value="Não participei">
+                                            <p>Não, não participei.</p>   
+                                        </label>
+                                        </span>                                                          
+                                </div>
+                        
+                                <!-- Estudos Bíblicos -->
+                                <div class=" flex flex-col gap-3">
+                                    <span class=" flex flex-col">
+                                        <h4 class=" text-[#3F4D67] text-lg font-normal font-poppins">Estudos Bíblicos</h4>
+                                        <input type="number" id="estudosBiblicos" placeholder="Estudos dirigidos" class="p-2 h-10 text-gray-200  font-extralight text-base rounded-[4px] border border-gray-200  focus:text-black  focus:outline-none focus:border">
+                                    </span>
+                                    <span>
+                                        <span class=" flex flex-col">
+                                            <h4 class=" text-[#3F4D67] text-lg font-normal font-poppins">Horas</h4>
+                                            
+                                            <input type="number" id="horas" placeholder="120min (em minutos)" class="p-2 h-10  text-gray-200  font-extralight text-base rounded-[4px] border border-gray-200  focus:text-black  focus:outline-none focus:border">
+                                            <p class=" text-xs font-light font-inter text-gray-600">Se for pioneiro auxiliar, regular, especial ou missionário em campo.</p>
+                                        </span>
+                                    </span>
+                                </div>
+                                <div>
+                                
+                            <span>
+                                <h4 class=" text-[#3F4D67] text-lg font-normal font-poppins">Observações</h4>
+                                <textarea name="" maxlength="500" id="obs"  placeholder="Preencha aqui caso tenha alguma informação por acrescentar " class="p-2 h-44 w-full text-gray-200  font-extralight text-base rounded-[4px] border border-gray-200  focus:text-black  focus:outline-none focus:border"></textarea>
+                            </span>
+                            </div>
+
+                            <!-- Botão de Enviar -->
+                             
+                            <div>
+                                <button class=" py-2 w-full bg-blue-500 text-white font-normal text-lg rounded-sm">Enviar Relatório</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- SCRIPT PARA ABRIR E FECHAR -->
+                    <script>
+                        const openModalBtn = document.getElementById('openModalBtn');
+                        const closeModalBtn = document.getElementById('closeModalBtn');
+                        const modal = document.getElementById('modal');
+                    
+                        openModalBtn.addEventListener('click', () => {
+                        modal.classList.remove('hidden');
+                        });
+                    
+                        closeModalBtn.addEventListener('click', () => {
+                        modal.classList.add('hidden');
+                        });
+                    </script>
+  
+                </article>
+            </article>
+        </section>
+    </main>
+</body>
+</html>

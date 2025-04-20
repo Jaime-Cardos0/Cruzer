@@ -1,0 +1,198 @@
+import { congregacao } from './Congregacao.js'; //importando o objeto principal do sistema, olhe a página 'Congregacao.js'
+//import { getSome, getComments } from './Dash_DataCards.js';
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('gr carregado');
+
+
+
+//     //Array de objetos que representam os dados dos cadastrados
+// let generalDataCount = [
+//     {titulo:"Total Publicadores", valor: congregacao.membros.length},
+//     {titulo:"Publicadores Ativos", valor: getSome('Ativo')},
+//     {titulo:"Relatórios Pendentes", valor: getSome('Irregular')},
+//     {titulo:"Relatórios Enviados", valor: getSome('Batizado')},
+// ]
+
+// //*DataCards: Apresenta as devidas informacoes na dashboard atraves dos cartoes de informacao
+// document.addEventListener("DOMContentLoaded", () => {
+//     const cards = document.querySelectorAll(".dataCard");
+//     generalDataCount.forEach((dado, index) => {
+//         if (cards[index]) {
+//             cards[index].querySelector('.titulo').textContent = dado.titulo;
+//             cards[index].querySelector('.valor').textContent = dado.valor;
+//         }
+//     });
+// })
+
+
+
+
+//Adiciona todos os grupos ao select
+const grupoSelect = document.getElementById('grupoSelect'); //Select onde estarão os grupos
+  congregacao.grupos?.forEach((grupo, index) => { // itera sobre todos os grupos cadastrados
+    const option = document.createElement('option');
+    option.value = index; // cada opção tem a posição do grupo no array grupos do objeto congregacao
+    option.textContent = grupo.grupoNome;
+    grupoSelect.appendChild(option); // adiciona o grupo ao select
+  });
+
+  let grupoIndex;//Observei algumas redundãncias na utilização desta variável,resolvo depois
+  let membroSelecionado;
+  const tbody2 = document.getElementById('tbody2'); //Corpo da tabela onde serão apresentados os membros da congregação e grupos
+  const verMembrosBtn = document.getElementById('verMembros'); // botão para ver membros em um grupo ou na congregação inteira
+  const removerGrupoBtn = document.getElementById('removerGrupo') // botão para eliminar um grupo
+  const adicionarMembrosBtn = document.getElementById('adicionarMembros'); // botão para ver membros que não têm grupo
+
+  
+  //adiciona elementos ao corpo da tabela com três parâmetros
+  //grupoId: é o grupo a qual o elemento pertence. O valor é 'Sem Grupo' no caso de não estar em um grupo
+  //operacao: a função que será aplicada ao evento do botão. Neste caso temos uma para adicionar membros e outra para remover
+  //acao: é apenas o texto que aparecerá no botão, 'adicionar' ou 'remover'
+  function inserirLinhasNaTabela(grupoId, operacao, acao){
+
+    tbody2.innerHTML = '';// Limpa a tabela sempre que a função é chamada, ou seja, quando um botão é clicado
+
+    congregacao.membros?.forEach((membro) => { //itera sobre cada membro no array membros do objeto congregacao
+      if (membro.publicadorGrupoInfo == grupoId) { 
+
+        let iniciais = membro.publicadorNome.split(' ');
+  
+        let tr = document.createElement('tr');
+        tr.classList.add('border-b', 'border-gray-400', 'hover:bg-gray-100');
+  
+        let td = document.createElement('td');
+        td.classList.add('py-2', 'px-6', 'text-left', 'whitespace-nowrap', 'flex', 'items-center', 'gap-2');
+  
+        let span = document.createElement('span');
+        span.textContent = iniciais[0].charAt(0) + iniciais[1].charAt(0);
+        span.classList.add('bg-blue-600', 'rounded-full', 'w-11','h-11', 'text-white', 'font-medium','flex','justify-center','items-center');
+  
+        let span2 = document.createElement('span');
+        span2.classList.add('flex', 'flex-col', 'items-start', 'gap-1');
+  
+        let p1 = document.createElement('p');
+        p1.classList.add('text-[14px]', 'font-[500]');
+        p1.textContent = membro.publicadorNome;
+  
+        let p2 = document.createElement('p');
+        p2.textContent = membro.publicadorEmail;
+  
+        let td2 = document.createElement('td');
+        td2.classList.add('py-2', 'px-6', 'text-left');
+        td2.textContent = membro.publicadorServico;
+  
+        let td3 = document.createElement('td');
+        td3.classList.add('py-2', 'px-6', 'text-left');
+        td3.textContent = membro.publicadorAtividade;
+  
+        let td4 = document.createElement('td');
+        td4.classList.add('py-2', 'px-6', 'text-center');
+  
+        let btn1 = document.createElement('button');
+        btn1.textContent = acao;
+        btn1.setAttribute('value', membro.publicadorId);
+        btn1.classList.add('bg-blue-800', 'text-white', 'px-6', 'py-2', 'rounded-lg', 'hover:bg-blue-900');
+
+        btn1.addEventListener('click', function(event){operacao(event.target, tr)});
+  
+        td4.appendChild(btn1);
+        td.appendChild(span);
+        td.appendChild(span2);
+        span2.appendChild(p1);
+        span2.appendChild(p2);
+        tr.appendChild(td);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+        tr.appendChild(td4);
+        tbody2.appendChild(tr);
+      }
+    });
+  }
+
+  // e: o parâmetro representa o objeto do evento, neste caso, o botão
+
+  // adiciona um membro a um grupo.
+  function addMembro(e, tr){
+    grupoIndex = grupoSelect.value
+    if (grupoIndex === "") {
+      alert("Selecione um grupo antes de adicionar o membro!");
+      return;
+    }
+    else
+    {
+      grupoIndex = parseInt(grupoIndex);
+      membroSelecionado = congregacao.membros.find(m => m.publicadorId === e.value); //procura o membro selecionado no array membros e retorna
+
+      if (membroSelecionado) { // por segurança, melhor verificar a existencia do membro
+        membroSelecionado.publicadorGrupoInfo = congregacao.grupos[grupoIndex].grupoId;
+        congregacao.grupos[grupoIndex].grupoMembros.push(membroSelecionado);
+
+        //Substitui o membro selecionado pelo seu correspondente no array de membros
+        congregacao.membros.forEach( m => {m.publicadorId == membroSelecionado.publicadorId ? m = membroSelecionado : m = m});
+
+        localStorage.setItem('Grupo',JSON.stringify(congregacao.grupos));
+        localStorage.setItem('Membro',JSON.stringify(congregacao.membros));
+
+        //membroSelecionado = undefined;// para poder ser reutilizado sem maiores problemas
+
+        tr.remove();
+      }
+    }
+  }
+
+  function removeMembro(e, tr){
+    grupoIndex = parseInt(grupoSelect.value);
+    let membroSelecionadoIndice = congregacao.grupos[grupoIndex].grupoMembros.findIndex(m => m.publicadorId === e.value);
+
+    if (membroSelecionadoIndice !== -1) {
+      membroSelecionado = congregacao.grupos[grupoIndex].grupoMembros.splice(membroSelecionadoIndice, 1);// retorna um array com o membro removido
+      //Substitui o membro selecionado pelo seu correspondente no array de membros
+      congregacao.membros.forEach( m => {m.publicadorId == membroSelecionado[0].publicadorId ? m.publicadorGrupoInfo = 'Sem Grupo' : m});
+
+      localStorage.setItem('Grupo',JSON.stringify(congregacao.grupos));
+      localStorage.setItem('Membro',JSON.stringify(congregacao.membros));
+
+      membroSelecionado = undefined;// para poder ser reutilizado sem maiores problemas
+
+      tr.remove();
+    }
+  }
+  
+  verMembrosBtn.addEventListener('click',() => {
+    grupoIndex = grupoSelect.value;
+    if (grupoIndex === "") {
+      inserirLinhasNaTabela('Sem Grupo', addMembro, 'Adicionar');
+    }else{
+      grupoIndex = parseInt(grupoIndex);
+      inserirLinhasNaTabela(congregacao.grupos[grupoIndex].grupoId, removeMembro, 'Remover');
+    }
+  });
+
+  adicionarMembrosBtn.addEventListener('click', () => {
+    grupoIndex = grupoSelect.value;
+    if (grupoIndex !== "") {
+      inserirLinhasNaTabela('Sem Grupo', addMembro, 'Adicionar');
+    }
+  })
+
+  removerGrupoBtn.addEventListener('click', () => {
+    grupoIndex = grupoSelect.value
+    if (grupoIndex === "") {
+      alert("Selecione um grupo para eliminá-lo!");
+      return;
+    }
+    else
+    {
+
+      //quero adicionar a possibilidade de exportar os membros antes de eliminar o grupo
+      grupoIndex = parseInt(grupoSelect.value);
+      congregacao.grupos[grupoIndex].grupoMembros.forEach(m => {m.publicadorGrupoInfo = 'Sem Grupo'})
+      congregacao.grupos.splice(grupoIndex, 1);// remove o grupo selecionado do array de grupos
+
+      localStorage.setItem('Grupo',JSON.stringify(congregacao.grupos));
+      localStorage.setItem('Membro',JSON.stringify(congregacao.membros));
+    }
+  })
+  
+});

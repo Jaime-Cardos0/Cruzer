@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+</head>
+<body  class=" flex flex-col gap-16 w-full h-100vh font-poppins">
+    <header class=" header-there  w-full flex flex-col justify-between  bg-cover bg-center px-3 py-2 ">
+            <nav class=" w-full flex flex-col gap-36">
+                <ul class=" flex justify-between">  
+                    <li class=" flex gap-10 justify-between">
+                        <a class=" w-28 h-10">
+                            <img  src="/Icon/cruzer.png" alt="">
+                        </a>
+                         <span class=" p-2 font-normal ">
+                            <a href="#" class=" text-white text-base font-light border-white px-2">Home</a>
+                            <a href="#" class=" text-white text-base font-light border-white px-2">chat</a>
+                            <a href="#" class=" text-white text-base font-light border-white px-2">Relatório</a>
+                        </span>
+                    </li>       
+                       
+                  
+                    <li>
+                        <img src="/Icon/LM (1).png" class=" w-9 h-9 rounded-full alt="">
+                    </li>
+                </ul>
+            </nav>
+    </header>
+    <main class=" flex flex-col gap-16 px-10  mb-8"> 
+        <section class=" flex">
+            <article class="relative w-40">
+                <img class=" position w-40 h-40 rounded-full absolute" src="/Icon/LM (1).png" alt="">
+            </article>
+            <article class=" relative ">
+                <span class=" w-96 position-two absolute flex flex-col gap-4">
+                    <div class="  flex text-3xl"> 
+                        <span class=" border-r font-light text-[#3F4D67] border-gray-500 px-2">Perfil</span> <h3 class=" px-2 font-light text-gray-500">Ladislau Mário</h3>
+                        
+                    </div>
+                    <span class=" top-10 absolute">
+                        <p class="  font-light text-sm text-gray-500">
+                            Última atualização: 02/12/2024
+                        </p>
+                    </span>
+                </span>
+            </article>
+        </section>
+
+        <section class=" flex flex-col gap-6">
+            <section class=" flex justify-between flex-wrap">
+                <article class=" flex flex-col ">
+                    <span class=" flex">
+                        <h1 class=" text-2xl text-[#3F4D67] font-light border-b-2 border-blue-500">Informações Pessoais</h1>  
+                    </span>
+                    
+                    <div class=" py-4">
+                        <span class=" flex gap-1 text-normal">
+                            <h4 class=" text-[#3F4D67] font-medium">Contacto: </h4>
+                            <p class=" font-light text-gray-800">+244 923 789 331</p>
+                        </span>
+                        <span class=" flex gap-1 text-normal">
+                            <h4 class=" text-[#3F4D67] font-medium">Endereço: </h4>
+                            <p class=" font-light text-gray-800">Bairro Novo, Moagem, Viana, Luanda</p>
+                        </span>
+                        <span class=" flex gap-1 text-normal">
+                            <h4 class=" text-[#3F4D67] font-medium">Serviço: </h4>
+                            <p class=" font-light text-gray-800">Pioneiro</p>
+                        </span>
+                    </div>
+                </article>
+                <article class=" flex flex-col ">
+                    <span class=" flex">
+                        <h1 class=" text-2xl text-[#3F4D67] font-light border-b-2 border-blue-500">Relatórios</h1>  
+                    </span>
+                    
+                    <div class=" py-4">
+                        <span class=" flex gap-1 text-normal">
+                            <h4 class=" text-[#3F4D67] font-medium">Enviados: </h4>
+                            <p class=" font-light text-gray-800">9</p>
+                        </span>
+                        <span class=" flex gap-1 text-normal">
+                            <h4 class=" text-[#3F4D67] font-medium">Total de Horas: </h4>
+                            <p class=" font-light text-gray-800">1 horas e 20 minutos</p>
+                        </span>
+                        <span class=" flex gap-1 text-normal">
+                            <h4 class=" text-[#3F4D67] font-medium">Último Relatório: </h4>
+                            <p class=" font-light text-gray-800">02/12/2024</p>
+                        </span>
+                    </div>
+                </article>
+                <article class=" flex flex-col ">
+                    <span class=" flex">
+                        <h1 class=" text-2xl text-[#3F4D67] font-light border-b-2 border-blue-500">Notas ao Superintendente</h1>  
+                    </span>
+                    
+                    <div class=" py-4 gap-4 flex">
+                        <span>
+                            <textarea name="" id="" placeholder="Preencha caso tenha alguma informação" class="py-2 px-2 h-28 w-80  text-gray-400 bg-white font-extralight rounded-[4px] border border-gray-200  focus:text-black  focus:outline-none focus:border"></textarea>
+                        </span>
+                        <span class=" self-center">
+                            <button class=" rounded-full shadow p-4 flex justify-center items-center">
+                                <img src="/Icon/paper-plane.png" class=" w-6 h-6" alt="">
+                            </button>
+                        </span>
+                    </div>
+                </article>
+            </section>
+            <aside>
+                <button class="text-white py-2 px-4 font-light rounded-md bg-gradient-to-r from-blue-500 via-blue-700 to-blue-900">
+                    Compor Relatório
+                </button>
+            </aside>
+        </section>
+    </main>
+</body>
+</html>

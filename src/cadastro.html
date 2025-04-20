@@ -1,0 +1,311 @@
+<!-- Os select com atributo name="dataNascimento" e name="dataBatismo" não estão a funcionar como especificado no código Cadastro_interacao.js -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+      <!-- <link rel="stylesheet" href="/build/assets/css/app.css"> -->
+       <link rel="stylesheet" href="./output.css">
+      <script src="./Codes/Cadastro_interacao.js" defer></script>
+      <script type="module" src="./Codes/Congregacao.js" defer></script>
+      <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<bod class=" h-screen w-screen font-poppins bg-[#f5f5f5] flex ">  
+    
+    <header class=" flex-none w-44 h-full bg-[#3F4D67] ">
+       <nav class=" flex flex-col  bg-slate-600 h-96">
+        <ul class=" flex">
+            <li></li>
+            <li></li>
+        </ul>
+        <ul>
+            <li></li>
+            <li></li>
+        </ul>
+       </nav> 
+    </header>
+     <main class=" flex gap-8 flex-col w-full h-full px-6 py-2 overflow-y-auto" >
+        <nav class="w-full h-16 list-none">
+            <ul class=" flex justify-between items-center">
+               <li class=" text-[#3F4D67] flex gap-2 justify-center items-center">
+                 <h2 class=" text-[22px] font-[500] ">Publicador</h2> <span class=" font-mono text-lg font-medium" > > </span> <h3 class="text-xl font-[400]">Cadastrar Publicador</h3>
+               </li>
+               <li class=" flex gap-3">
+                <a class=" flex items-center justify-center bg-white rounded-3xl p-1 w-9 h-9"><img class=" w-[17px] h-[17px]" src="/Icon/settings.png" alt=""></a>
+                <a class=" flex items-center justify-center bg-white rounded-3xl p-1 w-9 h-9"><img class=" w-[17px] h-[17px]" src="/Icon/notification (5).png" alt=""></a>
+               </li> 
+            </ul>
+        </nav>
+        <aside class=" p-6 bg-white w-full h-[70px] rounded-md shadow-md shadow-gray-200 flex items-center gap-4">
+            <span>
+                <img class=" w-11 h-9" src="/Icon/cadastrar.png" alt="">
+            </span>
+            <span class="" >
+                <h4 class=" text-[#3F4D67] text-base font-semibold ">Cadastrar Publicador</h4>
+                 <p class=" text-xs text-gray-500 font-light line-clamp-1">Cadastre novos publicadores de forma rápida e simplificada para garantir uma gestão eficiente e organizada da congregação.</p>
+            </span>
+        </aside>
+   
+        <section class="bg-white shadow-lg shadow-gray-400 rounded-md px-16 flex flex-col gap-5 pb-5">
+            <label class="flex flex-col items-center justify-center p-2 border-b border-solid border-gray-300">
+                <h4 class=" text-[#3F4D67] text-xl font-medium">Cadastrar um novo publicador</h4>
+                <p class=" text-xs font-light text-gray-500">É rápido e fácil</p>
+            </label>
+            
+            <section class=" w-full flex flex-col gap-6 ">
+                <article class=" flex flex-col gap-3 ">
+                    <h4 class=" text-[#3F4D67] text-xl font-normal">Informações Pessoais</h4>
+                    <span class=" flex justify-between">
+                        <div class=" flex flex-col gap-4">
+                            <div class=" flex gap-3">
+                                <span>
+                                    <input type="text" placeholder="Nome" class=" nome p-2 h-9 w-44 text-gray-400 bg-white font-extralight text-base rounded-[4px] border border-gray-200  focus:text-black  focus:outline-none focus:border">
+                                </span>
+                                <span>
+                                    <input type="text" placeholder="Sobrenome" class="nome p-2 h-9 w-48 text-gray-400 bg-white font-extralight text-base rounded-[4px] border border-gray-200  focus:text-black  focus:outline-none focus:border">
+                                </span>
+                            </div>
+                
+                            <div class=" flex gap-2">
+                                <select id="day" name="dataNascimento" class=" w-16 h-9 text-gray-800 font-light text-base rounded-[4px] border border-gray-200">
+                                  <option value="" selected disabled>Dia</option>
+                                  <!-- Opções serão geradas pelo JavaScript -->
+                                </select>
+                              
+                                <select id="month" name="dataNascimento" class=" w-28 h-9 text-gray-800 font-light text-base rounded-[4px] border border-gray-200 focus:text-black  focus:outline-none focus:border">
+                                  <option value="" selected disabled>Mês</option>
+                                  <option value="1">Janeiro</option>
+                                  <option value="2">Fevereiro</option>
+                                  <option value="3">Março</option>
+                                  <option value="4">Abril</option>
+                                  <option value="5">Maio</option>
+                                  <option value="6">Junho</option>
+                                  <option value="7">Julho</option>
+                                  <option value="8">Agosto</option>
+                                  <option value="9">Setembro</option>
+                                  <option value="10">Outubro</option>
+                                  <option value="11">Novembro</option>
+                                  <option value="12">Dezembro</option>
+                                </select>
+                              
+                                <select id="year" name="dataNascimento" class=" w-24 h-9 text-gray-800 font-light text-base rounded-[4px] border border-gray-200 focus:text-black  focus:outline-none focus:border">
+                                  <option value="" selected disabled>Ano</option>
+                                  <!-- Opções serão geradas pelo JavaScript -->
+                                </select>
+                           </div>
+                        </div>
+        
+                        <div class=" flex flex-col gap-4">
+                            <span class=" flex gap-4">
+                                <label class=" flex items-center gap-3 p-2 h-9 w-32 text-gray-800 bg-white font-light text-base rounded-[4px] border border-gray-200" >
+                                    <p>Masculino</p>
+                                    <input type="radio" name="sexo" value="Masculino">
+                                </label>
+                                <label class=" flex items-center gap-3 p-2 h-9 w-32 text-gray-800 bg-white font-light text-base rounded-[4px] border border-gray-200">
+                                    <p>Feminino</p>
+                                    <input type="radio" name="sexo" value="Feminino">
+                                </label>
+                            </span>
+                            <span>
+                                <input type="text" id="bairro" placeholder="Bairro: Vila Alice" class="p-2 h-9 w-80 text-gray-200 bg-white font-extralight text-base rounded-[4px] border border-gray-200  focus:text-black  focus:outline-none focus:border">
+                            </span>
+                        </div>
+                    </span>
+                </article>
+    
+                <article class=" flex flex-col gap-3 ">
+                    <h4 class=" text-[#3F4D67] text-xl font-normal">Informações de Login e Acesso</h4>
+                    <span class=" flex justify-between">
+                        <div class=" flex flex-col gap-4">
+                            <span>
+                                <input type="email" id="email" placeholder="E-mail: ladislau@gamil.com" class="p-2 h-9 w-80 text-gray-200 bg-white font-extralight text-base rounded-[4px] border border-gray-200  focus:text-black  focus:outline-none focus:border">
+                            </span> 
+                        </div>
+                        <div class=" flex flex-col gap-4">
+                            <span>
+                                <input type="tel" id="telefone" placeholder="Telefone: 9XX-XXX-XXX" class="p-2 h-9 w-80 text-gray-200 bg-white font-extralight text-base rounded-[4px] border border-gray-200  focus:text-black  focus:outline-none focus:border">
+                            </span>
+                        </div>
+                    </span>
+    
+                </article>
+                
+                <article class=" flex flex-col gap-3 ">
+                    <h4 class=" text-[#3F4D67] text-xl font-normal">Dados de Status e Atividade</h4>
+                    <span class=" flex justify-between">
+                        <div>
+                            <span class=" flex gap-4">
+                                <label class=" flex items-center gap-3 p-2 h-9 w-32 text-gray-800 bg-white font-light text-base rounded-[4px] border border-gray-200">
+                                    <p>Batizado</p>
+                                    <input type="radio" name="batismo" value="Batizado">
+                                </label>
+                                <label class=" flex items-center gap-3 p-2 h-9 w-40 text-gray-800 bg-white font-light text-base rounded-[4px] border border-gray-200">
+                                    <p>Não Batizado</p>
+                                    <input type="radio" name="batismo" value="Não batizado">
+                                </label>
+                            </span>
+        
+                            <span>
+                                <div class="mb-4">
+                                     <label class=" font-medium text-[#3F4D67] text-xs">Status de Família</label>
+                                    <div class="flex items-center gap-4 mt-2">
+                                        <label class=" flex items-center gap-2 p-2 h-9 w-44 justify-center text-gray-800 bg-white font-light text-base rounded-[4px] border border-gray-200">
+                                            <p>Chefe de Família</p>
+                                            <input type="radio" name="familyStatus" value="Chefe" id="chefe">
+                                        </label>
+                                    </div>
+                                </div>
+                                <div id="editarMembrosBtn" class="hidden mb-4">
+                                    <button type="button" id="abrirFormularioBtn" class="px-2 py-2 font-light text-base bg-blue-600 text-white rounded shadow hover:bg-blue-500">Editar Membros de Família</button>
+                                </div>
+                                <div id="membrosForm" class="hidden">
+                                    <label class="font-medium text-[#3F4D67] text-sm">Adicionar Membro:</label>
+                                    <div class="flex items-center gap-2">
+                                        <input type="text" id="pesquisarMembro" placeholder="Pesquisar membros da família..." class=" w-80 h-9 text-gray-800 bg-white font-light text-base px-4 py-2 rounded-[4px] border border-gray-200  focus:text-black  focus:outline-none focus:border">
+                                        <button type="button" id="adicionarMembroBtn" class=" text-base font-light px-3 py-2 bg-blue-600 text-white rounded shadow hover:bg-blue-500">
+                                            Adicionar
+                                        </button>
+                                    </div>
+                                    <ul id="listaMembros" class="mt-4 list-disc pl-6"></ul>
+                                </div>
+                            </span>
+                        </div>
+        
+                        <div class=" w-80 flex flex-col gap-6">
+                            <span class=" flex gap-2">
+                                <select id="baptism-day" name="dataBatismo" class="w-16 h-9 text-gray-800 font-light text-base rounded-[4px] border border-gray-200">
+                                  <option value="" selected disabled>Dia</option>
+                                  <!-- Opções serão geradas pelo JavaScript -->
+                                </select>
+               
+                                <select id="baptism-month" name="dataBatismo" class=" w-28 h-9 text-gray-800 font-light text-base rounded-[4px] border border-gray-200 focus:text-black  focus:outline-none focus:border">
+                                  <option value="" selected disabled>Mês</option>
+                                  <option value="1">Janeiro</option>
+                                  <option value="2">Fevereiro</option>
+                                  <option value="3">Março</option>
+                                  <option value="4">Abril</option>
+                                  <option value="5">Maio</option>
+                                  <option value="6">Junho</option>
+                                  <option value="7">Julho</option>
+                                  <option value="8">Agosto</option>
+                                  <option value="9">Setembro</option>
+                                  <option value="10">Outubro</option>
+                                  <option value="11">Novembro</option>
+                                  <option value="12">Dezembro</option>
+                                </select>
+                              
+                                <select id="baptism-year" name="dataBatismo" class=" w-24 h-9 text-gray-800 font-light text-base rounded-[4px] border border-gray-200 focus:text-black  focus:outline-none focus:border">
+                                  <option value="" selected disabled>Ano</option>
+                                  <!-- Opções serão geradas pelo JavaScript -->
+                                </select>
+                            </span>        
+                        </div>
+                    </span>
+                    <span class=" flex justify-between">
+                        <div>
+                            <span class=" flex flex-col gap-2">
+                                <label class=" font-medium text-[#3F4D67] text-xs">Tipo de Serviço</label>
+                                <span class="flex flex-col gap-2 mt-2">
+                                    <label class=" flex items-center gap-3 p-2 h-9 w-36 text-gray-800 bg-white font-light text-base rounded-[4px] border border-gray-200">
+                                        <p>Publicador</p>
+                                        <input type="radio" name="servico" value="Publicador">
+                                    </label>
+                                    <label class=" flex items-center gap-2 p-2 h-9 w-44 text-gray-800 bg-white font-light text-base rounded-[4px] border border-gray-200">
+                                        <p>Pioneiro Regular</p>
+                                        <input type="radio" name="servico" value="Pioneiro Regular">
+                                    </label>
+                                    <label class=" flex items-center gap-2 p-2 h-9 w-44 text-gray-800 bg-white font-light text-base rounded-[4px] border border-gray-200">
+                                        <p>Pioneiro Auxiliar</p>
+                                        <input type="radio" name="servico" value="Pioneiro Auxiliar">
+                                    </label>
+                                </span>
+                            </span>
+                        </div>
+                        <div class=" w-80 flex flex-col gap-4">
+                            <span class=" flex flex-col gap-4">
+                                <label class=" font-medium text-[#3F4D67] text-xs">Status de Atividade</label>
+                                <label class=" flex items-center gap-3 p-2 h-9 w-24 text-gray-800 bg-white font-light text-base rounded-[4px] border border-gray-200" >
+                                    <p>Ativo</p>
+                                    <input type="radio" name="atividade" value="Ativo">
+                                </label>
+                                <label class=" flex items-center gap-3 p-2 h-9 w-28 text-gray-800 bg-white font-light text-base rounded-[4px] border border-gray-200">
+                                    <p>Irregular</p>
+                                    <input type="radio" name="atividade" value="Irregular">
+                                </label>
+                            </span>
+                        </div>
+                    </span>
+                </article>
+    
+                <article  class="flex flex-col gap-3">
+                    <h4 class=" text-[#3F4D67] text-xl font-normal">Atribuições e Permissões</h4>
+                    <div class=" flex justify-between">
+                        <span class=" flex flex-col gap-3">
+                            <label class=" font-medium text-[#3F4D67] text-xs">Função na congregação</label>
+                        <span class=" flex gap-2 flex-col">
+                            <label class=" flex items-center gap-2 p-2 h-9 w-24 text-gray-800 bg-white font-light text-base rounded-[4px] border border-gray-200">
+                                <p>Ancião</p>
+                                <input type="radio" name="">
+                            </label>
+                            <label class=" flex items-center gap-2 p-2 h-9 w-44 text-gray-800 bg-white font-light text-base rounded-[4px] border border-gray-200">
+                                <p>Servo Ministerial</p>
+                                <input type="radio" name="">
+                            </label>
+                            
+                        </span>
+                        </span>
+                    
+                        <span class=" w-80 flex flex-col gap-3">
+                            <label class=" font-medium text-[#3F4D67] text-xs">Permissões de acesso</label>
+                            <span class=" flex gap-2 flex-col">
+                                <label class=" flex items-center gap-2 p-2 h-9 w-32 text-gray-800 bg-white font-light text-base rounded-[4px] border border-gray-200">
+                                    <p>Secretário</p>
+                                    <input type="radio" name="">
+                                </label>
+                                <label class=" flex items-center gap-2 p-2 h-9 w-28 text-gray-800 bg-white font-light text-base rounded-[4px] border border-gray-200">
+                                    <p>Pioneiro</p>
+                                    <input type="radio" name="">
+                                </label>
+                            </span>
+                        </span>
+                    </div>   
+                </article>
+                <article class="flex flex-col gap-3">
+                    <h4 class=" text-[#3F4D67] text-xl font-normal">Informações Complementares</h4>
+                    <span class=" flex justify-between">
+                            <div class=" flex gap-3">
+                                <span>
+                                    <textarea id="adInfo"  placeholder="Preencha aqui caso tenha alguma informação por acrescentar " class="py-2 px-2 h-32 w-80  text-gray-200 bg-white font-extralight text-base rounded-[4px] border border-gray-200  focus:text-black  focus:outline-none focus:border"></textarea>
+                                </span>
+                            </div>
+
+                            <div class=" w-80 flex flex-col gap-3 ">
+                                <label class=" font-medium text-[#3F4D67] text-xs">Deficiência </label>
+                                <span class=" flex gap-2">
+                                    <label class=" flex items-center gap-2 p-2 h-9 w-24 text-gray-800 bg-white font-light text-base rounded-[4px] border border-gray-200">
+                                        <p>Surdo</p>
+                                        <input type="radio" name="deficiencia" value="Surdo">
+                                    </label>
+                                    <label class=" flex items-center gap-2 p-2 h-9 w-24 text-gray-800 bg-white font-light text-base rounded-[4px] border border-gray-200">
+                                        <p>Mudo</p>
+                                        <input type="radio" name="deficiencia" value="Mudo">
+                                    </label>
+                                    <label class=" flex items-center gap-2 p-2 h-9 w-24 text-gray-800 bg-white font-light text-base rounded-[4px] border border-gray-200">
+                                        <p>Cego</p>
+                                        <input type="radio" name="deficiencia" value="Cego">
+                                    </label>
+                                </span>
+                            </div>
+                    </span>
+                </article>
+            </section>
+            <article class="  flex justify-end gap-2">
+                <button id="cancelarCadastro"class=" p-2 border-2 border-gray-300 text-gray-500 font-medium rounded-md">Cancelar</button>
+                <button id="cadastrar" class=" p-2 bg-blue-500 text-white font-medium rounded-md">Cadastrar</button>
+            </article>    
+        </section>
+    </main>
+</bod>
+</html>
