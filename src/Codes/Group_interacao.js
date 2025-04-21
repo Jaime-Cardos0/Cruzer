@@ -1,29 +1,31 @@
 import { congregacao } from './Congregacao.js'; //importando o objeto principal do sistema, olhe a página 'Congregacao.js'
-//import { getSome, getComments } from './Dash_DataCards.js';
+
+
+const superSelect = document.getElementById('superSelect');
+const ajudanteSelect = document.getElementById('ajudanteSelect');
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log('gr carregado');
 
+    // ## Secção de Criacao e Edicao de Grupos ##
+    // Aqui, o código lida com a criação e edição de grupos, permitindo adicionar novos grupos e preencher os campos de super e ajudante.
 
+    let ultimoGrupoId = congregacao.grupos[congregacao.grupos.length - 1]?.grupoId.slice(5, congregacao.grupos[congregacao.grupos.length - 1].grupoId.length - 1) || 0;
+    document.getElementById('nomeGrupo').placeholder = `Grupo ${++ultimoGrupoId}`; // Define o placeholder do campo de nome do grupo com o próximo número de grupo disponível
 
-//     //Array de objetos que representam os dados dos cadastrados
-// let generalDataCount = [
-//     {titulo:"Total Publicadores", valor: congregacao.membros.length},
-//     {titulo:"Publicadores Ativos", valor: getSome('Ativo')},
-//     {titulo:"Relatórios Pendentes", valor: getSome('Irregular')},
-//     {titulo:"Relatórios Enviados", valor: getSome('Batizado')},
-// ]
+    //Não esquecer de usar a biblioteca select2 para melhorar a aparência e dinamismo dos selects
+    // com seletores que fazem pesquisa por opções
+    function preencherSelect(select) {
+      congregacao.membros?.forEach((m, index) => {
+        const option = document.createElement('option');
+        option.value = m.publicadorId;
+        option.textContent = m.publicadorNome;
+        select.appendChild(option);
+      });
+    }
 
-// //*DataCards: Apresenta as devidas informacoes na dashboard atraves dos cartoes de informacao
-// document.addEventListener("DOMContentLoaded", () => {
-//     const cards = document.querySelectorAll(".dataCard");
-//     generalDataCount.forEach((dado, index) => {
-//         if (cards[index]) {
-//             cards[index].querySelector('.titulo').textContent = dado.titulo;
-//             cards[index].querySelector('.valor').textContent = dado.valor;
-//         }
-//     });
-// })
+    preencherSelect(superSelect);
+    preencherSelect(ajudanteSelect);
 
 
 
@@ -37,6 +39,12 @@ const grupoSelect = document.getElementById('grupoSelect'); //Select onde estar�
     grupoSelect.appendChild(option); // adiciona o grupo ao select
   });
 
+
+
+
+  // ## Secção de Interação com Grupos ##
+  // Aqui, o código lida com a interação entre os membros e os grupos, permitindo adicionar ou remover membros de grupos específicos.
+
   let grupoIndex;//Observei algumas redundãncias na utilização desta variável,resolvo depois
   let membroSelecionado;
   const tbody2 = document.getElementById('tbody2'); //Corpo da tabela onde serão apresentados os membros da congregação e grupos
@@ -46,15 +54,15 @@ const grupoSelect = document.getElementById('grupoSelect'); //Select onde estar�
 
   
   //adiciona elementos ao corpo da tabela com três parâmetros
-  //grupoId: é o grupo a qual o elemento pertence. O valor é 'Sem Grupo' no caso de não estar em um grupo
+  //grupo: é o grupo a qual o elemento pertence. O valor é 'Sem Grupo' no caso de não estar em um grupo
   //operacao: a função que será aplicada ao evento do botão. Neste caso temos uma para adicionar membros e outra para remover
   //acao: é apenas o texto que aparecerá no botão, 'adicionar' ou 'remover'
-  function inserirLinhasNaTabela(grupoId, operacao, acao){
+  function inserirLinhasNaTabela(grupo, operacao, acao){
 
     tbody2.innerHTML = '';// Limpa a tabela sempre que a função é chamada, ou seja, quando um botão é clicado
 
     congregacao.membros?.forEach((membro) => { //itera sobre cada membro no array membros do objeto congregacao
-      if (membro.publicadorGrupoInfo == grupoId) { 
+      if (Array.isArray(grupo) ? grupo.includes(membro.publicadorGrupo) : membro.publicadorGrupo === grupo) { 
 
         let iniciais = membro.publicadorNome.split(' ');
   
@@ -80,7 +88,7 @@ const grupoSelect = document.getElementById('grupoSelect'); //Select onde estar�
   
         let td2 = document.createElement('td');
         td2.classList.add('py-2', 'px-6', 'text-left');
-        td2.textContent = membro.publicadorServico;
+        td2.textContent = `${membro.publicadorServico || ''} ${membro.publicadorGrupo}`;
   
         let td3 = document.createElement('td');
         td3.classList.add('py-2', 'px-6', 'text-left');
@@ -125,7 +133,7 @@ const grupoSelect = document.getElementById('grupoSelect'); //Select onde estar�
       membroSelecionado = congregacao.membros.find(m => m.publicadorId === e.value); //procura o membro selecionado no array membros e retorna
 
       if (membroSelecionado) { // por segurança, melhor verificar a existencia do membro
-        membroSelecionado.publicadorGrupoInfo = congregacao.grupos[grupoIndex].grupoId;
+        membroSelecionado.publicadorGrupo = congregacao.grupos[grupoIndex].grupoId;
         congregacao.grupos[grupoIndex].grupoMembros.push(membroSelecionado);
 
         //Substitui o membro selecionado pelo seu correspondente no array de membros
@@ -148,7 +156,7 @@ const grupoSelect = document.getElementById('grupoSelect'); //Select onde estar�
     if (membroSelecionadoIndice !== -1) {
       membroSelecionado = congregacao.grupos[grupoIndex].grupoMembros.splice(membroSelecionadoIndice, 1);// retorna um array com o membro removido
       //Substitui o membro selecionado pelo seu correspondente no array de membros
-      congregacao.membros.forEach( m => {m.publicadorId == membroSelecionado[0].publicadorId ? m.publicadorGrupoInfo = 'Sem Grupo' : m});
+      congregacao.membros.forEach( m => {m.publicadorId == membroSelecionado[0].publicadorId ? m.publicadorGrupo = 'Sem Grupo' : m});
 
       localStorage.setItem('Grupo',JSON.stringify(congregacao.grupos));
       localStorage.setItem('Membro',JSON.stringify(congregacao.membros));
@@ -162,7 +170,9 @@ const grupoSelect = document.getElementById('grupoSelect'); //Select onde estar�
   verMembrosBtn.addEventListener('click',() => {
     grupoIndex = grupoSelect.value;
     if (grupoIndex === "") {
-      inserirLinhasNaTabela('Sem Grupo', addMembro, 'Adicionar');
+      const todosGrupos = congregacao.grupos.map(g => g.grupoId);
+      todosGrupos.push('Sem Grupo'); // adiciona também os sem grupo
+      inserirLinhasNaTabela(todosGrupos, addMembro, 'Adicionar');
     }else{
       grupoIndex = parseInt(grupoIndex);
       inserirLinhasNaTabela(congregacao.grupos[grupoIndex].grupoId, removeMembro, 'Remover');
@@ -184,11 +194,11 @@ const grupoSelect = document.getElementById('grupoSelect'); //Select onde estar�
     }
     else
     {
-
       //quero adicionar a possibilidade de exportar os membros antes de eliminar o grupo
       grupoIndex = parseInt(grupoSelect.value);
-      congregacao.grupos[grupoIndex].grupoMembros.forEach(m => {m.publicadorGrupoInfo = 'Sem Grupo'})
+      congregacao.grupos[grupoIndex].grupoMembros.forEach(m => {m.publicadorGrupo = 'Sem Grupo'})
       congregacao.grupos.splice(grupoIndex, 1);// remove o grupo selecionado do array de grupos
+      grupoSelect.options[grupoIndex].remove(); // remove a opção do select
 
       localStorage.setItem('Grupo',JSON.stringify(congregacao.grupos));
       localStorage.setItem('Membro',JSON.stringify(congregacao.membros));
@@ -196,3 +206,5 @@ const grupoSelect = document.getElementById('grupoSelect'); //Select onde estar�
   })
   
 });
+
+export { superSelect, ajudanteSelect };
